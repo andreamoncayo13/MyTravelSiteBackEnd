@@ -3711,11 +3711,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\owner\\source\\repos\\GitHub\\MyTravelSiteBackEnd\\myTravelAPI\\myTravelAPI\\myTravelAPI.csproj",
+      "projectUniqueName": "C:\\Users\\owner\\source\\repos\\GitHub\\MyTravelSiteBackEnd\\myTravelAPI\\myTravelAPI.csproj",
       "projectName": "myTravelAPI",
-      "projectPath": "C:\\Users\\owner\\source\\repos\\GitHub\\MyTravelSiteBackEnd\\myTravelAPI\\myTravelAPI\\myTravelAPI.csproj",
+      "projectPath": "C:\\Users\\owner\\source\\repos\\GitHub\\MyTravelSiteBackEnd\\myTravelAPI\\myTravelAPI.csproj",
       "packagesPath": "C:\\Users\\owner\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\owner\\source\\repos\\GitHub\\MyTravelSiteBackEnd\\myTravelAPI\\myTravelAPI\\obj\\",
+      "outputPath": "C:\\Users\\owner\\source\\repos\\GitHub\\MyTravelSiteBackEnd\\myTravelAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\owner\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -3792,7 +3792,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\PROGRAM FILES\\DOTNET\\sdk\\7.0.200\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.200\\RuntimeIdentifierGraph.json"
       }
     }
   }
