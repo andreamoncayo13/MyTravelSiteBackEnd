@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Reflection.Emit;
+using System.Xml.Linq;
 
 namespace myTravelAPI.Context
 {
@@ -13,9 +14,11 @@ namespace myTravelAPI.Context
         }
 
         public DbSet<User> Users { get; set; }
+        public DbSet<Comment> Comments { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>().ToTable("users");
+            modelBuilder.Entity<Comment>().ToTable("comments");
         }
     }
 }

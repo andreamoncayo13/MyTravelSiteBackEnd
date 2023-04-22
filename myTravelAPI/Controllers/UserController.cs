@@ -9,10 +9,10 @@ namespace myTravelAPI.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly AppDbContext _authContext;
+        private readonly AppDbContext _dbContext;
         public UserController(AppDbContext appDbContext)
         {
-            _authContext = appDbContext;
+            _dbContext = appDbContext;
         }
 
         [HttpPost("authenticate")]
@@ -21,7 +21,7 @@ namespace myTravelAPI.Controllers
             if (userObj == null)
                 return BadRequest();
 
-            var user = await _authContext.Users.FirstOrDefaultAsync(x => x.UserName == userObj.UserName && x.Password == userObj.Password);
+            var user = await _dbContext.Users.FirstOrDefaultAsync(x => x.UserName == userObj.UserName && x.Password == userObj.Password);
             if (user == null)
                 return NotFound(new { Message = "User Not Found!" });
 
@@ -37,8 +37,8 @@ namespace myTravelAPI.Controllers
         {
             if (userObj == null)
                 return BadRequest();
-            await _authContext.Users.AddAsync(userObj);
-            await _authContext.SaveChangesAsync();
+            await _dbContext.Users.AddAsync(userObj);
+            await _dbContext.SaveChangesAsync();
             return Ok(new
             {
                 Message = "User Registered!"
