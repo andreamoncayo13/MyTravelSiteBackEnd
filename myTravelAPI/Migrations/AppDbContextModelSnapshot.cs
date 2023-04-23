@@ -84,6 +84,12 @@ namespace myTravelAPI.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("Email")
+                        .IsUnique();
+
+                    b.HasIndex("UserName")
+                        .IsUnique();
+
                     b.ToTable("users", (string)null);
                 });
 #pragma warning restore 612, 618

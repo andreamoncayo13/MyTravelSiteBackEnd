@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using myTravelAPI.Models;
 using Microsoft.Identity.Client;
 using System.ComponentModel.Design;
+using myTravelAPI.ControllerObjects;
 
 namespace myTravelAPI.Controllers
 {
@@ -47,11 +48,13 @@ namespace myTravelAPI.Controllers
         [HttpPost ("create")]
        public async Task<IActionResult> CreateComment(Comment comment)
        {
-                _dbContext.Comments.Add(comment);
-           await _dbContext.SaveChangesAsync();
+           await _dbContext.Comments.AddAsync(comment);
+           _dbContext.SaveChanges();
 
-            //    return CreatedAtAction("GetTodoItem", new { id = todoItem.Id }, todoItem);
-           return CreatedAtAction(nameof(Comment), new { comment });
+            return Ok(new
+            {
+                Message = "Comment created"
+            });
         }
     }
 }

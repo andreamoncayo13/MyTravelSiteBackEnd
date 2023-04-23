@@ -19,8 +19,6 @@ namespace myTravelAPI.Models
         [StringLength(100)]
         public string UserName { get; set; }
 
-        [Required]
-        [StringLength(100)]
         public DateTime CreatedDate { get; set; }
     }
 }

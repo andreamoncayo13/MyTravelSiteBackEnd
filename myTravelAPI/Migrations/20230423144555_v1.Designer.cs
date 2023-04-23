@@ -12,7 +12,7 @@ using myTravelAPI.Context;
 namespace myTravelAPI.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230420001512_v1")]
+    [Migration("20230423144555_v1")]
     partial class v1
     {
         /// <inheritdoc />
@@ -86,6 +86,12 @@ namespace myTravelAPI.Migrations
                         .HasColumnType("nvarchar(100)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Email")
+                        .IsUnique();
+
+                    b.HasIndex("UserName")
+                        .IsUnique();
 
                     b.ToTable("users", (string)null);
                 });

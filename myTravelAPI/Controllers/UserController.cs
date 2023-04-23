@@ -2,7 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using myTravelAPI.Models;
-using Microsoft.Identity.Client;
+using myTravelAPI.ControllerObjects;
+
 namespace myTravelAPI.Controllers
 {
     [Route("api/[controller]")]
@@ -16,7 +17,7 @@ namespace myTravelAPI.Controllers
         }
 
         [HttpPost("authenticate")]
-        public async Task<IActionResult> Authenticate([FromBody] User userObj)
+        public async Task<IActionResult> Authenticate([FromBody] LoginRq userObj)
         {
             if (userObj == null)
                 return BadRequest();
@@ -37,12 +38,20 @@ namespace myTravelAPI.Controllers
         {
             if (userObj == null)
                 return BadRequest();
+            var user = await _dbContext.Users.FirstOrDefaultAsync(x => x.UserName == userObj.UserName);
+
+            if (user != null)
+                return BadRequest("User has already been registered.");
+
             await _dbContext.Users.AddAsync(userObj);
-            await _dbContext.SaveChangesAsync();
+
+            _dbContext.SaveChanges();
+
             return Ok(new
             {
                 Message = "User Registered!"
             });
         }
+
     }
 }

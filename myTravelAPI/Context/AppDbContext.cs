@@ -19,6 +19,15 @@ namespace myTravelAPI.Context
         {
             modelBuilder.Entity<User>().ToTable("users");
             modelBuilder.Entity<Comment>().ToTable("comments");
+
+            modelBuilder.Entity<User>()
+                .HasIndex(u => u.UserName)
+                .IsUnique();
+
+            modelBuilder.Entity<User>()
+                .HasIndex(u => u.Email)
+                .IsUnique();
         }
+
     }
 }
