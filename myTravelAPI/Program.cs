@@ -9,15 +9,7 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddCors(option =>
-{
-    option.AddPolicy("MyPolicy", builder =>
-    {
-        builder.AllowAnyOrigin()
-        .AllowAnyMethod()
-        .AllowAnyHeader();
-    });
-});
+
 builder.Services.AddDbContext<AppDbContext>(option =>
 {
     option.UseSqlServer(builder.Configuration.GetConnectionString("SqlServerConmStr"));
@@ -32,8 +24,13 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
-app.UseCors("MyPolicy");
+//app.UseHttpsRedirection();
+app.UseCors(options => 
+        options.WithOrigins(new string[] {"http://my-travel-site.eastus.cloudapp.azure.com","https://my-travel-site.eastus.cloudapp.azure.com","http://localhost:4200"})
+        .AllowAnyMethod()
+        .AllowAnyHeader()
+        .AllowCredentials()
+);
 
 app.UseAuthentication();
 
